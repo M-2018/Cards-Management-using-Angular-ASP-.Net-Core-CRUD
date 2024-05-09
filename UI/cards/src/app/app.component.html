@@ -1,0 +1,56 @@
+<div class="container" style="background-color: #3FA9F2; color: aliceblue; padding: 20px;width: 100%;">
+  <h1 style="font-family: 'Arial', sans-serif;">Cards Management using Angular + ASP .Net Core CRUD</h1>
+  <div class="row" style="max-width: 100%;">    
+    <div id="left" class="col-8">
+      <div class="cards-form animated-border" style="background-color: #3FA9F2; padding: 20px; border-radius: 10px; border: 2px solid white;">
+        <form #form="ngForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label><strong style="color: aliceblue;">Card Name</strong></label>
+            <input type="text" name="cardName" class="form-control" [(ngModel)]="card.cardholderName" style="background-color: #78bcbe; color: aliceblue;">
+          </div>
+          <div class="form-group">
+            <label><strong style="color: aliceblue;">Card Number</strong></label>
+            <input type="text" name="cardNumber" class="form-control" [(ngModel)]="card.cardNumber" style="background-color: #78bcbe; color: aliceblue;">
+          </div>
+          <div class="form-group row">
+            <div class="col-4" style="margin-top: 7px;">
+              <label><strong style="color: aliceblue;">CVC</strong></label>
+              <div class="mt-4">
+                <input type="text" name="cvc" class="form-control" [(ngModel)]="card.cvc" style="background-color: #78bcbe; color: aliceblue;">
+            </div>
+            </div>
+            <div class="col-4">
+              <label><strong style="color: aliceblue;">Expiry Month</strong></label>
+              <input type="text" name="expiryMonth" class="form-control" [(ngModel)]="card.expiryMonth" style="background-color: #3FA9F2; color: aliceblue;">
+            </div>
+            <div class="col-4">
+              <label><strong style="color: aliceblue;">Expiry Year</strong></label>
+              <input type="text" name="expiryYear" class="form-control" [(ngModel)]="card.expiryYear" style="background-color: #3FA9F2; color: aliceblue;">
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <button class="btn btn-primary" style="background-color: #3FA9F2; color: aliceblue;border-radius: 10px; border: 2px solid white;">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div (click)="populateForm(card)" id="right" class="col-4 mt-4">
+      <div class="table-responsive animated-border" style="border-radius: 10px; border: 2px solid white;">
+        <table class="table">
+          <tbody>
+            <tr *ngFor="let card of cards">
+              <td style="background-color: #3FA9F2;color:aliceblue">{{card.cardholderName}}</td>
+              <td style="background-color: #3FA9F2;color:aliceblue">{{card.cardNumber}}</td>
+              <td style="background-color: #3FA9F2;color:aliceblue; text-align: center;">
+                <a (click)="deleteCard(card.id)">
+                  <i class="fa fa-trash" aria-hidden="true" style="color: aliceblue;"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
